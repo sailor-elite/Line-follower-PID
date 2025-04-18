@@ -7,8 +7,11 @@ BluetoothSerial SerialBT;
 
 String PID_Data;
 
-#define SENSOR_L 34
-#define SENSOR_R 35
+#define SENSOR_L1 33
+#define SENSOR_L2 32
+#define SENSOR_L3 35
+#define SENSOR_L4 34
+#define SENSOR_L5 39
 
 char buf[30];
 char* token;
@@ -38,8 +41,11 @@ void parsing(String data){
 void setup() {
 Serial.begin(9600);
 SerialBT.begin("ESP32PID");
-pinMode(SENSOR_L, INPUT);
-
+pinMode(SENSOR_L1, INPUT);
+pinMode(SENSOR_L2, INPUT);
+pinMode(SENSOR_L3, INPUT);
+pinMode(SENSOR_L4, INPUT);
+pinMode(SENSOR_L5, INPUT);
 }
 
 
@@ -47,11 +53,13 @@ pinMode(SENSOR_L, INPUT);
 
 void loop() {
   // Reading data from IR Sensors
-  int LeftSensor = digitalRead(SENSOR_L);
-  //int RightSensor = digitalRead(SENSOR_R);
+  int L1Sensor = digitalRead(SENSOR_L1);
+  int L2Sensor = digitalRead(SENSOR_L2);
+  int L3Sensor = digitalRead(SENSOR_L3);
+  int L4Sensor = digitalRead(SENSOR_L4);
+  int L5Sensor = digitalRead(SENSOR_L5);
   //
-  //Serial.println("R: "); Serial.println(RightSensor);
-  Serial.println("L: "); Serial.println(LeftSensor);
+
 if (SerialBT.available()){
 
   String data = SerialBT.readStringUntil('\n');
