@@ -7,15 +7,28 @@ BluetoothSerial SerialBT;
 
 String PID_Data;
 
+
+// IR sensor Pins
 #define SENSOR_L1 33
 #define SENSOR_L2 32
 #define SENSOR_L3 35
 #define SENSOR_L4 34
 #define SENSOR_L5 39
 
+// L298N Pins
+#define EN_A 25
+#define IN_1 26
+#define IN_2 27
+#define IN_3 14
+#define IN_4 12
+#define EN_B 13
+
+
 char buf[30];
 char* token;
-float P = 0.0, I = 0.0, D = 0.0;
+
+// P I D parameters
+float P = 1.0, I = 0.2, D = 0.3;
 
 
 
